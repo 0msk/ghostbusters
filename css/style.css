@@ -1,0 +1,790 @@
+* {
+  box-sizing: border-box;
+  /* так же выбает контент бокс. разница в том,
+   что если оставить контент бокс и у нас есть какая либо кнопка и мы ей зададим конерктный размер,а потом внутри этой кнопки и укажим текст или что-то подобное, что может быть больше чем границы этой кнопки, то указанный нами размер кнопки будет игнорироваться и она станет больше. по этому в таких случаях нужно ставить бордер бокс и тогда кнопка никогда не станет больше той заданной границы, которую мы указали */
+  /*такие правила применяется ко всему сайту */
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  /*стиль шрифта/ если здесь прописываем то он наследует везде этот шрифт. могут капризничать кнопки, по этому там в таком случае потребуется прописывать шрифт*/
+  font-weight: 300;
+  /*размер шрифта*/
+  color: #363636;
+  /*цвет для всего текста*/
+}
+
+.no-scroll {
+  overflow: hidden;
+  /* данный класс показывает что прокрутки экрана не будет для мобильного меню активного */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  height: 104px;
+  padding-left: 34px;
+  border-bottom: 1px solid #d4d4d4;
+  /* шапка */
+}
+
+.m-menu {
+  /* мобильное меню */
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.header-logo:after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  background-color: #d4d4d4;
+  margin-left: 34px;
+}
+
+.search-input {
+  background-image: url(../img/search-icon.svg);
+  /*../ это возврат в предыдущую папку*/
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 38px;
+  border: none;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  color: #a5a5a5;
+  margin-left: 34px;
+}
+
+.search-input:focus {
+  outline-style: dotted;
+  /* делает обводку выбранного активного окна точками */
+}
+
+.navigation {
+  margin-right: 44px;
+  margin-left: auto;
+}
+
+.navigation-link {
+  position: relative;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 21px;
+  color: #363636;
+  margin-right: 18px;
+}
+
+.navigation-link:after {
+  /* создает появление подчеркивания при наведение курсора на кнопки навигации */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+
+.navigation-link:hover:after {
+  transform: scaleX(1);
+  /* так же способствует появлению подчеркивания кнопок навигации */
+}
+
+.button-group {
+  display: flex;
+  height: 100%;
+}
+
+.button {
+  height: 100%;
+  cursor: pointer;
+  /* при наведении курсора на кнопку курсор превращается в палец*/
+}
+
+.sign-up {
+  color: #5671f6;
+  font-size: 18px;
+  line-height: 21px;
+  border: none;
+  background-color: #fff;
+  padding-left: 34px;
+  padding-right: 34px;
+  border-left: 1px solid #d4d4d4;
+}
+
+.login {
+  /*кнопка авторизации*/
+  font-size: 18px;
+  line-height: 21px;
+  color: #ffffff;
+  background-color: #5671f6;
+  border: none;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.mobile-buttons {
+  display: none;
+  /* мобильные иконки поиска и меню не показываются. чтобы их было видно выставленно правило дисплай блок в правилах малого разрешения экрана */
+}
+
+.m-menu-button,
+.search-button {
+  /* мобильная кнопка меню и поиска */
+  padding: 5px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-line {
+  display: block;
+  width: 16px;
+  background-color: #000;
+  height: 2px;
+  flex-basis: 16px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  border-radius: 40px;
+}
+
+.container {
+  /*контейнер в котором находится два стобика с постером и описанием*/
+  max-width: 1130px;
+  /*максимальная ширина контейнера*/
+  margin: auto;
+  /*делает автоматические отступ у блока по краям и делает контейнер по середине*/
+}
+
+.film {
+  /*первый столбец с постером*/
+  padding-top: 80px;
+  /*отступ сверху*/
+  padding-bottom: 80px;
+  /*отступ снизу*/
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.film-wrapper {
+  display: flex;
+  /*позволил текст который был под постером встать по середине справа от постера */
+}
+
+.film-trailer {
+  /*область "смотреть трейлер"*/
+  display: flex;
+  /*выставляет по середине контейнера*/
+  flex-direction: column;
+  /*отвечает за то, чтобы сточка посмотреть трейлер шла столбцом за постером, а не строчкой*/
+  margin-right: 60px;
+}
+
+.poster {
+  /*картинка фильма*/
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  width: 358px;
+  /*ширина постера*/
+  /*важно выставить размер для картинки, так как если исходник будет больше допускаемого размера то он будет сдвигать текст на сайте*/
+}
+
+.trailer-button {
+  /*кнопка посмотреть трейлер*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* три верхних строчки для выравнивание вертикально по центру*/
+  /*либо можно отдельно сделать:
+  .trailer-button-icon,
+  .trailer-button-text {
+  vertical-align: middle;*/
+  background-color: #fff;
+  /*цвет фона*/
+  border: 1px solid #d4d4d4;
+  /* <solid> сплошная линия*/
+  border-radius: 0px 0px 5px 5px;
+  /*закругление углов постера. сокращенный список*/
+  /*полный список
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;*/
+  padding-bottom: 25px;
+  padding-top: 25px;
+  cursor: pointer;
+  text-decoration: none;
+  /* данное правило убирает подчеркивание ссылки */
+}
+
+.trailer-button-icon {
+  margin-right: 14px;
+}
+
+.film-title {
+  /*блок названия фильма*/
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 42px;
+  margin-top: 0;
+  /*убрали отступ сверху*/
+  margin-bottom: 16px;
+}
+
+.film-subtitle {
+  /*блок альтернативного названия фильма*/
+  display: block;
+  /*сделали блочным элементом*/
+  margin-bottom: 32px;
+  /*но данный отступ не сработает, так как это строчный элемент, по этому мы его делаем блочным*/
+  color: #a5a5a5;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.film-description {
+  /*блок описания фильма*/
+  font-size: 14px;
+  line-height: 150%;
+  max-width: 514px;
+  /*максимальная ширина*/
+  color: #000000;
+  margin-bottom: 50px;
+}
+
+.about-film {
+  /*раздел бюджета*/
+  display: flex;
+  margin-bottom: 50px;
+}
+
+.about-text {
+  /*текст в разделе бюджет*/
+  display: block;
+  /*делает текст блочным*/
+  font-size: 16px;
+  line-height: 19px;
+  margin-bottom: 16px;
+}
+
+.about-text-bold {
+  display: inline-block;
+  /*сделали текст строчно блочным*/
+  width: 100px;
+  vertical-align: top;
+  /*вретикальное выравнивание по верхнему краю. нужно для того, что если текст будет слишком большой и произойдет переполнение текста в сточке, то например бюджет будет написан слева и столбиком вниз если к слову бюджет написать еще пару слов, а сумма бюджета которая пишется параллельно слева от бюджета будет сверху напротив первой строчки бюджета. */
+  font-weight: bold;
+  /*делает текст жирным*/
+}
+
+.left-side {
+  /*левый столб бюджета*/
+  margin-right: 40px;
+}
+
+.rating {
+  /*раздел рейтинга*/
+  display: flex;
+  align-items: center;
+  /*расставляет по центру друг друга*/
+}
+
+.film-rating-counter {
+  /*квадрат с процентом рейтинга*/
+  /* размер блока можно выставить так
+  padding-top: 34px;
+  padding-bottom: 33px;
+  padding-left: 23px;
+  padding-right: 24px;
+  или по другому...*/
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /*или вместо размеров то так*/
+  border: 1px solid #5671f6;
+  border-radius: 10px;
+  margin-right: 28px;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  color: #5671f6;
+}
+
+.rating-title {
+  /*заголовок рейтинга зрителей*/
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 0;
+  /*необходимо проставить отступ сверху самому либо браузер будет проставлять свои числа*/
+  margin-bottom: 12px;
+}
+
+.rating-text {
+  /*текст оценки*/
+  display: block;
+  /*чтобы был блочный и занимал всю строчку*/
+  margin-bottom: 7px;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.rating-text-bold {
+  font-weight: bold;
+}
+
+.cast {
+  /*раздел актеры*/
+  padding-top: 70px;
+  padding-bottom: 100px;
+}
+
+.tabs {
+  /*переключение с актеров на создателей */
+  display: flex;
+  align-items: center;
+  /*чтобы друг от друга выравнивались по центру*/
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #a5a5a5;
+  margin-right: 30px;
+}
+
+.section-title.active {
+  /*автикная вкладка например актеры или создатели*/
+  color: #363636;
+  font-weight: 900;
+  /*lдает жирность активной вкладе */
+}
+
+.tabs-content {
+  display: none;
+  align-items: center;
+  /*так как после того как мы иконки актеров установили по центруу. то они не влезли и скукожились. чтобы этого не было нужно разрешить им перейти на другую строку. за это отвечает флекс врап*/
+  flex-wrap: wrap;
+  visibility: hidden;
+  /* убирает вообще карточки актеров */
+}
+.tabs-content.visible {
+  display: flex;
+  visibility: visible;
+  /* теперь мы видим только блок с актерами */
+}
+.tab {
+  cursor: pointer;
+  /* при наведении на актеров или создателей появляется палец */
+}
+.card {
+  display: flex;
+  align-items: center;
+  flex-basis: 25%;
+  /*так как мы разрешили карточкам переноситься на другую строку то произошла ассиметрия. для того, чтобы было красиво и одинаково при 8 карточках можно расположить по 4 карточки на одну строку, значит ставим значение флекс басис 25%*/
+  margin-bottom: 35px;
+}
+
+.card-image {
+  /*изображение актера или режиссера*/
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  /*при уменьшении размера картинки она может сильно сузиться, чтобы этого н было пишем обжект фит ковер и она обрезает под наш размер*/
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.name {
+  /* имена актеров */
+  font-size: 16px;
+  line-height: 19px;
+  color: #5671f6;
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.en-name {
+  /* имена актеров на английском */
+  color: #a5a5a5;
+}
+
+.news {
+  /* блок новостей */
+  /*если вставить изображение и прописать бекраунд репит но репит и бекраунд сайз ковер то будет картинка на фоне:
+  ("background-image: url(../img/fon.png);")
+  добавили картинку на фон в раздел новости 
+  ("background-repeat: no-repeat;")
+   проставляется для того, чтобы картинка не повторялась 
+  "background-size: cover;"
+   данное правило заставляет картинку заполнять всю область и сужаться или расширяться в случае изменение экрана */
+  background-color: #f3f3f3;
+  /*выставляет цвет фона. даже если на фон мы установили кратинку, то цвет фона все ранво должен быть в случае если картинка не прогрузится у пользователя. фон должен быть в контраст тексту, чтобы текст было видно и как на картинке фоновой, так и на фоновом цвете*/
+  padding-top: 70px;
+  padding-bottom: 100px;
+}
+
+.section-news-title {
+  /* титульник "новости по теме" */
+  font-weight: 900;
+  color: #000000;
+  margin-bottom: 65px;
+}
+
+.news-cards {
+  /* карточки новостей */
+  display: flex;
+  /* выравнивает карточки, делает их в строчку */
+  flex-wrap: wrap;
+  /* позволяет карточкам переноситься но нову строку если их станет больше */
+  justify-content: space-between;
+  /* выставляет контент на равном удалении друг от друга */
+}
+
+.news-card {
+  /* отдельно каждая карточка новостей */
+  flex-basis: 23%;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.news-data {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.news-title {
+  font-weight: 900;
+  font-size: 14px;
+  line-height: 16px;
+  color: #000000;
+  margin-top: 14px;
+}
+.button-next {
+  display: none;
+  background-color: transparent;
+  /* делает фон прозрачным */
+  border: none;
+  /* уберает обводку кнопки */
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  /* определяет находение кнопки по оси игрик */
+  z-index: 99;
+  cursor: pointer;
+}
+/* далее, чтобы сделать адаптивную верстку на других устройствах, например на телефоне то мы делаем сделующее */
+@media (max-width: 1200px) {
+  /* указывает максимальное разрешение экрана. тоесть если пользователь зашел с устройтсва, чъе разрешение экрана меньше чем 1200 px то применяй следующие правила */
+  .container {
+    max-width: 960px;
+    /* теперь если у пользователя экран меньше 1200 то размер контейнера станет меньше */
+  }
+
+  .card-image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .header {
+    height: 90px;
+    padding-left: 20px;
+  }
+
+  .sign-up {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .navigation {
+    margin-right: 20px;
+  }
+
+  .search-input {
+    margin-left: 20px;
+  }
+
+  .navigation-link {
+    margin-right: 10px;
+    font-size: 16px;
+  }
+
+  .header-logo:after {
+    margin-left: 20px;
+  }
+}
+
+/* ./закрывающая скобка @медиа */
+@media (max-width: 991px) {
+  .container {
+    max-width: 760px;
+  }
+
+  .navigation {
+    display: none;
+    /* при уменьшении экрана пропадет меню навигации */
+  }
+
+  .search-input {
+    margin-right: auto;
+    /* прибивает поиск к логотипу */
+  }
+
+  .film-title {
+    font-size: 24px;
+    line-height: 1.4;
+  }
+
+  .film-subtitle {
+    margin-bottom: 20px;
+  }
+
+  .film-description,
+  .about-film {
+    margin-bottom: 30px;
+  }
+
+  .about-text-bold {
+    display: block;
+    /* делает блочным бюджет вместо строчного режима */
+    margin-bottom: 10px;
+  }
+
+  .card-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .card {
+    flex-basis: 50%;
+    /* делает фото актеров по два */
+  }
+
+  .news-card {
+    flex-basis: 48%;
+    margin-bottom: 20px;
+  }
+}
+
+/* ./закрывающая скобка @медиа */
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 560px;
+  }
+
+  .header {
+    height: 80px;
+  }
+
+  .m-menu {
+    display: none;
+    flex-direction: column;
+    /* чтобы все выставилось в столбик */
+    align-items: center;
+    justify-content: space-around;
+    /* отодвигает кнопки меню равномерно */
+    position: fixed;
+    left: 0;
+    top: 68px;
+    right: 0;
+    bottom: 0;
+    height: calc(100% - 68px);
+    /* ксс функция калк */
+    background: #5671f6;
+  }
+
+  .m-menu.active {
+    display: flex;
+    /* данный класс позвляет показывать мобильное меню когда нажимаем на кнопку мобильного меню */
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  .button-group {
+    height: auto;
+    flex-direction: column;
+    /* таким образом кнопки войти и зарегистрироваться встают в одну колонку */
+  }
+
+  .search-input {
+    width: 260px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    background-image: none;
+    margin: 0;
+  }
+
+  .navigation-link {
+    color: #ffffff;
+    margin-bottom: 18px;
+    margin-right: 0;
+  }
+
+  .navigation-link:last-child {
+    margin-bottom: 0;
+    /* правило для всех кроме последнего */
+  }
+
+  .sign-up {
+    background-color: transparent;
+    color: #ffffff;
+    border: none;
+    margin-bottom: 30px;
+  }
+
+  .film {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  .film-wrapper {
+    flex-wrap: wrap;
+  }
+
+  /* делает постер сверху, а текст сниз постера, а если поставить правило :".film-text {
+    order: -1;" то текст будет сверху постера*/
+  .film-text {
+    order: -1;
+    /* делает текст сверху постера */
+    margin-bottom: 30px;
+  }
+
+  .cast {
+    padding-top: 50px;
+    padding-bottom: 70px;
+  }
+
+  .news {
+    padding-top: 50px;
+    padding-bottom: 70px;
+  }
+  .news-card {
+    max-width: 90%;
+    /* делает максимальную ширину слайда новостей что позволяет увидеть нашу стрелку перелистывания слайдов */
+  }
+  .mobile-buttons {
+    /* на маленьких экранах показывает мобильную иконку поиска и меню */
+
+    display: block;
+    margin-left: auto;
+    /* делает кнопку мобильного мен и поиска справа */
+  }
+
+  .header-logo:after {
+    display: none;
+  }
+
+  .header {
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+  }
+}
+.button-next {
+  display: block;
+}
+/* ./закрывающая скобка @медиа */
+@media (max-width: 576px) {
+  .container {
+    width: 95%;
+  }
+
+  .film-title {
+    font-style: 20px;
+    line-height: 23px;
+    margin-bottom: 12px;
+  }
+
+  .film-subtitle {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 26px;
+  }
+
+  .film-description {
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 40px;
+  }
+
+  .about-film {
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 40px;
+    /* выставляет текст бюджета в столбик */
+  }
+
+  .about-text-bold {
+    display: inline-block;
+    /* делает список бюджета строчно блочнымм тоесть в строчку каждый но столбиком */
+  }
+
+  .film-trailer,
+  .poster {
+    width: 100%;
+    /* делает ширину постера на весь экран */
+  }
+
+  .film-trailer {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+
+  .film-text {
+    /* делает постер сверху, а текст снизу */
+    order: 1;
+    margin-bottom: 0;
+  }
+
+  .card {
+    flex-basis: 100%;
+    /* выставляет карточки актеров по одному в столбик */
+    margin-bottom: 20px;
+  }
+
+  .card-image {
+    width: 60px;
+    height: 60px;
+    /* размер картинок актеров */
+  }
+
+  .tabs {
+    margin-bottom: 35px;
+  }
+
+  .cast {
+    padding-bottom: 50px;
+  }
+
+  .news-card {
+    flex-basis: 100%;
+    /* делает новости в столбик */
+  }
+}
