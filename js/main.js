@@ -18,7 +18,6 @@ $(document).ready(function () {
     // позволяет быть выбранным либо актеры либо создатели, а не вместе одновремено
     $(this).toggleClass("active");
     // позволяет сделать кнопки актеры и создатели кликабельными
-    $(this).attr("data-target");
     let activeTabContent = $(this).attr("data-target");
     $(".tabs-content").removeClass("visible");
     // remove - удаляет
@@ -53,4 +52,3 @@ $(document).ready(function () {
     },
   });
 });
-// закончил на29:03 но видимо где-то ошибка. лучше начать где то с 25:00
